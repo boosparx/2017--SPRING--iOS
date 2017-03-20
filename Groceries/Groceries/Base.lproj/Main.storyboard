@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -41,6 +42,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="JNg-8y-hy1" kind="show" id="dC4-ek-p2H"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -53,6 +57,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c6X-lN-NJZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1304.8" y="213.64317841079463"/>
+        </scene>
+        <!--Grocery Detail View Controller-->
+        <scene sceneID="hdd-zV-kHT">
+            <objects>
+                <viewController id="JNg-8y-hy1" customClass="GroceryDetailViewController" customModule="Groceries" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ekw-jA-h0h"/>
+                        <viewControllerLayoutGuide type="bottom" id="EBv-rv-7BH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="szu-AP-0PL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="aisle #" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNO-aZ-FaQ">
+                                <rect key="frame" x="309.5" y="72" width="49.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="catagory " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGL-2j-CE5">
+                                <rect key="frame" x="16" y="72" width="72" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vNO-aZ-FaQ" firstAttribute="top" secondItem="ekw-jA-h0h" secondAttribute="bottom" constant="8" id="59A-2d-ZeS"/>
+                            <constraint firstItem="JGL-2j-CE5" firstAttribute="top" secondItem="ekw-jA-h0h" secondAttribute="bottom" constant="8" id="9Bm-ZC-h4Q"/>
+                            <constraint firstItem="vNO-aZ-FaQ" firstAttribute="trailing" secondItem="szu-AP-0PL" secondAttribute="trailingMargin" id="g0J-VH-Ghd"/>
+                            <constraint firstItem="JGL-2j-CE5" firstAttribute="leading" secondItem="szu-AP-0PL" secondAttribute="leading" constant="16" id="hWf-oA-wsy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="aisleLabel" destination="vNO-aZ-FaQ" id="QWY-oS-aab"/>
+                        <outlet property="categoryLabel" destination="JGL-2j-CE5" id="rME-cQ-pEU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wfg-Fz-y55" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2224.8000000000002" y="213.64317841079463"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="S2J-34-UHJ">

@@ -20,4 +20,11 @@ class GroceryItem
     self.category = category
     self.aisle = aisle
   }
+    init(groceryDictionary: [String: Any])
+{
+    self.name = groceryDictionary["name"] as! String
+    self.category = groceryDictionary["category"] as! String
+    self.aisle = groceryDictionary["aisle"] as! Int
+}
+    
 }

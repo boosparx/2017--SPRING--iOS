@@ -16,10 +16,12 @@ class GroceriesTableViewController: UITableViewController
   override func viewDidLoad()
   {
     super.viewDidLoad()
-    groceries.append(GroceryItem(name: "Carrots", category: "Vegetables", aisle: 2))
-    groceries.append(GroceryItem(name: "Bread", category: "Starches", aisle: 8))
-    groceries.append(GroceryItem(name: "Hot Pockets", category: "Frozen", aisle: 5))
-      
+    
+  //  groceries.append(GroceryItem(name: "Carrots", category: "Vegetables", aisle: 2))
+  //  groceries.append(GroceryItem(name: "Bread", category: "Starches", aisle: 8))
+  //  groceries.append(GroceryItem(name: "Hot Pockets", category: "Frozen", aisle: 5))
+    
+      loadGroceries()
   }
 
     override func didReceiveMemoryWarning()
@@ -47,6 +49,7 @@ class GroceriesTableViewController: UITableViewController
       // Configure the cell...
       let aGroceryItem = groceries[indexPath.row]
       cell.textLabel?.text = aGroceryItem.name
+      cell.detailTextLabel?.text = aGroceryItem.category
 
       return cell
     }
@@ -86,14 +89,34 @@ class GroceriesTableViewController: UITableViewController
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+       let selectedIndexPath = tableView.indexPath(for: sender as! UITableViewCell)!
+       let selectedGroceryItem = groceries[selectedIndexPath.row]
+       let groceryDetailVC = segue.destination as! GroceryDetailViewController
+       groceryDetailVC.groceryItem = selectedGroceryItem
     }
-    */
+    
+    func loadGroceries()
+    {
+        do
+        {
+            let filePath = Bundle.main.path(forResource: "groceries", ofType: "json")
+            let dataFromFile = try? Data(contentsOf: URL(fileURLWithPath: filePath!))
+            let groceryData: [[String: Any]] = try JSONSerialization.jsonObject(with: dataFromFile!, options: []) as! [[String: Any]]
+            for groceryDictionary in groceryData
+            {
+                let aGroceryItem = GroceryItem(groceryDictionary: groceryDictionary)
+                groceries.append(aGroceryItem)
+            }
+        }
+        catch let error as NSError
+        {
+            print(error)
+        }
+    }
 
 }
