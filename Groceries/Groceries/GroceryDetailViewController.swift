@@ -31,6 +31,7 @@ class GroceryDetailViewController: UIViewController
         // Dispose of any resources that can be recreated.
     }
     
+// scrap
 
     /*
     // MARK: - Navigation
